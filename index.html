@@ -7,7 +7,6 @@
     <link type="text/css" rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- SEO Core -->
-    <title>AI Text to Speech & Dubbing Platform | VoxAI</title>
     <meta name="description" content="Generate realistic AI voices, clone voices, and dub videos into multiple languages instantly. Fast, scalable AI voice platform.">
     <meta name="keywords" content="AI TTS, text to speech, AI dubbing, voice cloning, speech synthesis">
 
@@ -44,7 +43,14 @@
     </p>
 
     <a href="/" class="inline-block bg-blue-600 hover:bg-blue-700 transition px-8 py-4 rounded-xl text-lg font-semibold shadow-lg">
-        Get Started Now
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation">
+            <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>
+            <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"
+                    stroke-dasharray="90 125">
+                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"
+                                  repeatCount="indefinite"/>
+            </circle>
+x        </svg>
     </a>
 </header>
 
@@ -86,14 +92,26 @@
         </div>
     </div>
 </section>
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation">
-    <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>
-    <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"
-            stroke-dasharray="90 125">
-        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"
-                          repeatCount="indefinite"/>
-    </circle>
-</svg>
+
+<!--<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation">-->
+<!--    <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>-->
+<!--    <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"-->
+<!--            stroke-dasharray="90 125">-->
+<!--        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"-->
+<!--                          repeatCount="indefinite"/>-->
+<!--    </circle>-->
+<!--</svg>-->
+<!-- Canvas container -->
+<div id="compose-root"></div>
 <script type="application/javascript" src="composeApp.js"></script>
+<script>
+    window.addEventListener("load", () => {
+        const root = document.getElementById("compose-root")
+        root.classList.add("active")
+
+        // Optional: disable scrolling AFTER canvas loads
+        document.body.style.overflow = "hidden"
+    })
+</script>
 </body>
 </html>
