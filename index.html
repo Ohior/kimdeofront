@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +51,7 @@
                 <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"
                                   repeatCount="indefinite"/>
             </circle>
-x        </svg>
+            x        </svg>
     </a>
 </header>
 
@@ -105,13 +106,31 @@ x        </svg>
 <div id="compose-root"></div>
 <script type="application/javascript" src="composeApp.js"></script>
 <script>
-    window.addEventListener("load", () => {
-        const root = document.getElementById("compose-root")
-        root.classList.add("active")
+    // Function to be called when Wasm is ready
+    function onWasmReady() {
+        const root = document.getElementById("compose-root");
+        const seo = document.getElementById("seo-wrapper");
 
-        // Optional: disable scrolling AFTER canvas loads
-        document.body.style.overflow = "hidden"
-    })
+        // 1. Show the Canvas
+        root.classList.add("active");
+
+        // 2. Lock the scroll
+        document.body.style.overflow = "hidden";
+
+        // 3. Remove/Hide SEO content after the fade-in starts
+        // We use a slight delay so the user doesn't see a white flash
+        setTimeout(() => {
+            if (seo) seo.remove(); // Remove from DOM entirely for performance
+        }, 500);
+    }
+
+    // If your composeApp.js doesn't provide a hook,
+    // window.load is your best secondary bet.
+    window.addEventListener("load", () => {
+        // Start the transition
+        onWasmReady();
+    });
 </script>
 </body>
 </html>
+

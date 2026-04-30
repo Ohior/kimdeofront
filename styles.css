@@ -11,28 +11,25 @@
         padding: 0;
         width: 100%;
     }
+/* Update your styles.css or <style> block */
+#compose-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
 
-    /* Canvas starts hidden */
-    #compose-root {
-        position: fixed;
-        inset: 0;
-        width: 100vw;
-        height: 100vh;
-        display: none; /* 👈 important */
-        z-index: 999;
-        background: black; /* optional */
-    }
+#compose-root.active {
+    display: block;
+    opacity: 1;
+}
 
-    /* When ready, show canvas */
-    #compose-root.active {
-        display: block;
-    }
-    #compose-root {
-        opacity: 0;
-        transition: opacity 0.4s ease;
-    }
-
-    #compose-root.active {
-        display: block;
-        opacity: 1;
-    }
+/* Class to hide the SEO content */
+.seo-hidden {
+    display: none !important;
+}
