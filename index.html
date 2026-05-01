@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>KimdeoAI</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -108,21 +108,24 @@
 <script>
     // Function to be called when Wasm is ready
     function onWasmReady() {
-        const root = document.getElementById("compose-root");
+    const root = document.getElementById("compose-root");
+
+    // 1. Show the Canvas
+    root.classList.add("active");
+
+    // 2. Lock scroll AND reset body alignment for the Canvas
+    document.body.style.overflow = "hidden";
+    document.body.style.textAlign = "left"; // Canvas usually expects top-left origin
+    document.body.style.alignContent = "normal";
+
+    // 3. Optional: Smooth out the removal
+    setTimeout(() => {
+        // I noticed your HTML doesn't have an 'seo-wrapper' id.
+        // You should wrap your SEO header and section in <div id="seo-wrapper">
         const seo = document.getElementById("seo-wrapper");
-
-        // 1. Show the Canvas
-        root.classList.add("active");
-
-        // 2. Lock the scroll
-        document.body.style.overflow = "hidden";
-
-        // 3. Remove/Hide SEO content after the fade-in starts
-        // We use a slight delay so the user doesn't see a white flash
-        setTimeout(() => {
-            if (seo) seo.remove(); // Remove from DOM entirely for performance
-        }, 500);
-    }
+        if (seo) seo.remove();
+    }, 500);
+}
 
     // If your composeApp.js doesn't provide a hook,
     // window.load is your best secondary bet.

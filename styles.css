@@ -12,17 +12,30 @@
         width: 100%;
     }
 /* Update your styles.css or <style> block */
+
+
 #compose-root {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
+    /* 1. Use dvh instead of vh */
     height: 100vh;
+    height: 100dvh;
+
+    /* 2. Important: Ensure it handles safe areas (for notches) */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+
     z-index: 9999;
-    display: none; /* Hidden by default */
+    display: none;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
+
+    /* 3. Help the canvas fill the container properly */
+    overflow: hidden;
 }
+
 
 #compose-root.active {
     display: block;
