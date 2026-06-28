@@ -1,0 +1,8 @@
+{
+  "name": "KimdeoAI Fullscreen Canvas",
+  "short_name": "KimdeoAI",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

@@ -1,104 +1,4 @@
 
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">-->
-<!--    <title>KimdeoAI</title>-->
-<!--    <link type="text/css" rel="stylesheet" href="styles.css">-->
-<!--    <script src="https://cdn.tailwindcss.com"></script>-->
-<!--    &lt;!&ndash; SEO Core &ndash;&gt;-->
-<!--    <meta name="description" content="Generate realistic AI voices, clone voices, and dub videos into multiple languages instantly. Fast, scalable AI voice platform.">-->
-<!--    <meta name="keywords" content="AI TTS, text to speech, AI dubbing, voice cloning, speech synthesis">-->
-
-<!--    &lt;!&ndash; Open Graph (for sharing) &ndash;&gt;-->
-<!--    <meta property="og:title" content="AI Voice Generator & Dubbing Platform">-->
-<!--    <meta property="og:description" content="Create voiceovers and dub videos using AI in seconds.">-->
-<!--    <meta property="og:type" content="website">-->
-
-<!--    &lt;!&ndash; Structured Data (VERY powerful for SEO) &ndash;&gt;-->
-<!--    <script type="application/ld+json">-->
-<!--        {-->
-<!--            "@context": "https://schema.org",-->
-<!--            "@type": "SoftwareApplication",-->
-<!--            "name": "VoxAI",-->
-<!--            "applicationCategory": "Multimedia",-->
-<!--            "operatingSystem": "Web",-->
-<!--            "description": "AI-powered text-to-speech and video dubbing platform.",-->
-<!--            "offers": {-->
-<!--                "@type": "Offer",-->
-<!--                "price": "0",-->
-<!--                "priceCurrency": "USD"-->
-<!--            }-->
-<!--        }-->
-<!--    </script>-->
-<!--</head>-->
-<!--<body style="text-align: center; align-content: center">-->
-<!--&lt;!&ndash; SEO CONTENT (visible to Google + users) &ndash;&gt;-->
-<!--<header class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-6 text-center">-->
-<!--    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">-->
-<!--        AI Text-to-Speech & Dubbing Platform-->
-<!--    </h1>-->
-<!--    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">-->
-<!--        Create natural-sounding AI voices and dub videos into multiple languages with speed and precision.-->
-<!--    </p>-->
-
-<!--    <a href="/" class="inline-block bg-blue-600 hover:bg-blue-700 transition px-8 py-4 rounded-xl text-lg font-semibold shadow-lg">-->
-<!--        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation">-->
-<!--            <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>-->
-<!--            <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"-->
-<!--                    stroke-dasharray="90 125">-->
-<!--                <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"-->
-<!--                                  repeatCount="indefinite"/>-->
-<!--            </circle>-->
-<!--            x        </svg>-->
-<!--    </a>-->
-<!--</header>-->
-
-
-<!--&lt;!&ndash;<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation">&ndash;&gt;-->
-<!--&lt;!&ndash;    <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"&ndash;&gt;-->
-<!--&lt;!&ndash;            stroke-dasharray="90 125">&ndash;&gt;-->
-<!--&lt;!&ndash;        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"&ndash;&gt;-->
-<!--&lt;!&ndash;                          repeatCount="indefinite"/>&ndash;&gt;-->
-<!--&lt;!&ndash;    </circle>&ndash;&gt;-->
-<!--&lt;!&ndash;</svg>&ndash;&gt;-->
-<!--&lt;!&ndash; Canvas container &ndash;&gt;-->
-<!--<div id="compose-root"></div>-->
-<!--<script type="application/javascript" src="composeApp.js"></script>-->
-<!--<script>-->
-<!--    // Function to be called when Wasm is ready-->
-<!--    function onWasmReady() {-->
-<!--    const root = document.getElementById("compose-root");-->
-
-<!--    // 1. Show the Canvas-->
-<!--    root.classList.add("active");-->
-
-<!--    // 2. Lock scroll AND reset body alignment for the Canvas-->
-<!--    document.body.style.overflow = "hidden";-->
-<!--    document.body.style.textAlign = "left"; // Canvas usually expects top-left origin-->
-<!--    document.body.style.alignContent = "normal";-->
-
-<!--    // 3. Optional: Smooth out the removal-->
-<!--    setTimeout(() => {-->
-<!--        // I noticed your HTML doesn't have an 'seo-wrapper' id.-->
-<!--        // You should wrap your SEO header and section in <div id="seo-wrapper">-->
-<!--        const seo = document.getElementById("seo-wrapper");-->
-<!--        if (seo) seo.remove();-->
-<!--    }, 500);-->
-<!--}-->
-
-<!--    // If your composeApp.js doesn't provide a hook,-->
-<!--    // window.load is your best secondary bet.-->
-<!--    window.addEventListener("load", () => {-->
-<!--        // Start the transition-->
-<!--        onWasmReady();-->
-<!--    });-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>KimdeoAI | Fullscreen AI Canvas</title>
     <link type="text/css" rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- SEO Core (kept for discovery, but will be hidden when canvas takes over) -->
