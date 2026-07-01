@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!-- CRITICAL: viewport configuration for full-screen canvas on mobile -->
@@ -12,7 +12,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- SEO Core (kept for discovery, but will be hidden when canvas takes over) -->
-    <meta name="description" content="Generate realistic AI voices, clone voices, and dub videos into multiple languages instantly. Fast, scalable AI voice platform.">
+    <meta name="description"
+        content="Generate realistic AI voices, clone voices, and dub videos into multiple languages instantly. Fast, scalable AI voice platform.">
     <meta name="keywords" content="AI TTS, text to speech, AI dubbing, voice cloning, speech synthesis">
     <meta property="og:title" content="AI Voice Generator & Dubbing Platform">
     <meta property="og:description" content="Create voiceovers and dub videos using AI in seconds.">
@@ -43,7 +44,8 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             /* Prevent any overflow or scrolling that breaks fullscreen canvas */
@@ -59,7 +61,8 @@
             /* Remove any default alignment or centering that could offset canvas */
             text-align: left;
             align-content: stretch;
-            background: #000000; /* deep fallback, canvas will cover */
+            background: #000000;
+            /* deep fallback, canvas will cover */
             margin: 0;
             padding: 0;
             /* Disable touch overscroll / bounce on mobile */
@@ -102,7 +105,8 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.2s ease;
-            background: #0a0a0a; /* subtle background if canvas not yet drawn */
+            background: #0a0a0a;
+            /* subtle background if canvas not yet drawn */
         }
 
         /* When canvas is active -> fullscreen visible layer */
@@ -117,11 +121,12 @@
             display: block;
             width: 100% !important;
             height: 100% !important;
-            object-fit: contain;  /* Usually Compose uses its own sizing, but force block + full coverage */
+            object-fit: contain;
+            /* Usually Compose uses its own sizing, but force block + full coverage */
         }
 
         /* For any Compose-generated canvas, ensure it fills container without gaps */
-        #compose-root > canvas,
+        #compose-root>canvas,
         .compose-canvas {
             position: absolute;
             top: 0;
@@ -151,266 +156,310 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
-<!-- WRAP SEO CONTENT inside a wrapper for removal / fade-out when canvas takes over -->
-<div id="seo-wrapper">
-    <header class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-6 text-center">
-        <div class="seo-content">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                AI Text-to-Speech & Dubbing Platform
-            </h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-                Create natural-sounding AI voices and dub videos into multiple languages with speed and precision.
-            </p>
+    <!-- WRAP SEO CONTENT inside a wrapper for removal / fade-out when canvas takes over -->
+    <div id="seo-wrapper">
+        <header class="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20 px-6 text-center">
+            <div class="seo-content">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                    AI Text-to-Speech & Dubbing Platform
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                    Create natural-sounding AI voices and dub videos into multiple languages with speed
+                    and precision.
+                </p>
 
-            <div class="inline-block bg-blue-600 hover:bg-blue-700 transition px-8 py-4 rounded-xl text-lg font-semibold shadow-lg cursor-default">
-                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50" role="presentation" style="display: inline-block; margin-right: 8px;">
-                    <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none"/>
-                    <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"
+                <div
+                    class="inline-block bg-blue-600 hover:bg-blue-700 transition px-8 py-4 rounded-xl text-lg font-semibold shadow-lg cursor-default">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 50 50"
+                        role="presentation" style="display: inline-block; margin-right: 8px;">
+                        <circle cx="25" cy="25" r="20" stroke="#ccc" stroke-width="4" fill="none" />
+                        <circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none" stroke-linecap="round"
                             stroke-dasharray="90 125">
-                        <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="1s"
-                                          repeatCount="indefinite"/>
-                    </circle>
-                </svg>
-                <span>AI Studio — Loading immersive experience...</span>
+                            <animateTransform attributeName="transform" type="rotate" from="0 25 25" to="360 25 25"
+                                dur="1s" repeatCount="indefinite" />
+                        </circle>
+                    </svg>
+                    <span>AI Studio — Loading immersive experience...</span>
+                </div>
+
+                <!-- Additional descriptive text for SEO -->
+                <div class="mt-12 text-gray-400 text-sm max-w-xl mx-auto">
+                    ⚡ Ultra-low latency voice synthesis | Multi-language dubbing | Voice cloning
+                </div>
             </div>
+        </header>
 
-            <!-- Additional descriptive text for SEO -->
-            <div class="mt-12 text-gray-400 text-sm max-w-xl mx-auto">
-                ⚡ Ultra-low latency voice synthesis | Multi-language dubbing | Voice cloning
-            </div>
-        </div>
-    </header>
+        <!-- secondary micro content, just for info -->
+        <section class="bg-gray-50 py-8 text-center text-gray-500 text-sm">
+            <p>Next-generation neural TTS engine • 99.9% uptime • Instant API</p>
+        </section>
+    </div>
 
-    <!-- secondary micro content, just for info -->
-    <section class="bg-gray-50 py-8 text-center text-gray-500 text-sm">
-        <p>Next-generation neural TTS engine • 99.9% uptime • Instant API</p>
-    </section>
-</div>
+    <!-- Canvas container: where Compose Multiplatform renders fullscreen UI -->
+    <div id="compose-root"></div>
 
-<!-- Canvas container: where Compose Multiplatform renders fullscreen UI -->
-<div id="compose-root"></div>
+    <!-- composeApp.js (your compiled Kotlin/WASM or JS target) -->
+    <script type="application/javascript" src="composeApp.js"></script>
 
-<!-- composeApp.js (your compiled Kotlin/WASM or JS target) -->
-<script type="application/javascript" src="composeApp.js"></script>
+    <script>
+        (function () {
+            // ENSURE FULLSCREEN CANVAS OCCUPIES ENTIRE VIEWPORT ON MOBILE + DESKTOP
+            // this function locks the body and prepares compose root for fullscreen takeover
+            function activateFullscreenCanvas() {
+                const root = document.getElementById("compose-root");
+                if (!root) return;
 
-<script>
-    (function() {
-        // ENSURE FULLSCREEN CANVAS OCCUPIES ENTIRE VIEWPORT ON MOBILE + DESKTOP
-        // this function locks the body and prepares compose root for fullscreen takeover
-        function activateFullscreenCanvas() {
-            const root = document.getElementById("compose-root");
-            if (!root) return;
+                // Mark active -> CSS will show canvas overlay
+                root.classList.add("active");
 
-            // Mark active -> CSS will show canvas overlay
-            root.classList.add("active");
+                // Apply fullscreen locking to HTML/BODY (redundant but robust)
+                document.documentElement.style.overflow = "hidden";
+                document.documentElement.style.height = "100%";
+                document.body.style.overflow = "hidden";
+                document.body.style.position = "fixed";
+                document.body.style.top = "0";
+                document.body.style.left = "0";
+                document.body.style.right = "0";
+                document.body.style.bottom = "0";
+                document.body.style.width = "100%";
+                document.body.style.height = "100%";
+                document.body.style.margin = "0";
+                document.body.style.padding = "0";
 
-            // Apply fullscreen locking to HTML/BODY (redundant but robust)
-            document.documentElement.style.overflow = "hidden";
-            document.documentElement.style.height = "100%";
-            document.body.style.overflow = "hidden";
-            document.body.style.position = "fixed";
-            document.body.style.top = "0";
-            document.body.style.left = "0";
-            document.body.style.right = "0";
-            document.body.style.bottom = "0";
-            document.body.style.width = "100%";
-            document.body.style.height = "100%";
-            document.body.style.margin = "0";
-            document.body.style.padding = "0";
-
-            // Also guarantee canvas container dimensions match window exactly
-            const setCanvasDimensions = () => {
-                if (root) {
-                    root.style.position = "fixed";
-                    root.style.top = "0px";
-                    root.style.left = "0px";
-                    root.style.width = "100%";
-                    root.style.height = "100%";
-                    root.style.display = "block";
-                    // Force any inner canvas to adopt full size (some compose targets use child canvas)
-                    const canvasElem = root.querySelector("canvas");
-                    if (canvasElem) {
-                        canvasElem.style.width = "100%";
-                        canvasElem.style.height = "100%";
-                        canvasElem.style.display = "block";
-                        canvasElem.style.objectFit = "cover"; // cover or contain: but compose usually handles layout
+                // Also guarantee canvas container dimensions match window exactly
+                const setCanvasDimensions = () => {
+                    if (root) {
+                        root.style.position = "fixed";
+                        root.style.top = "0px";
+                        root.style.left = "0px";
+                        root.style.width = "100%";
+                        root.style.height = "100%";
+                        root.style.display = "block";
+                        // Force any inner canvas to adopt full size (some compose targets use child canvas)
+                        const canvasElem = root.querySelector("canvas");
+                        if (canvasElem) {
+                            canvasElem.style.width = "100%";
+                            canvasElem.style.height = "100%";
+                            canvasElem.style.display = "block";
+                            canvasElem.style.objectFit = "cover"; // cover or contain: but compose usually handles layout
+                        }
                     }
+                };
+
+                setCanvasDimensions();
+                // watch for resize (orientation change on mobile)
+                window.addEventListener("resize", () => {
+                    setCanvasDimensions();
+                    // optional: if compose needs resize event, trigger custom event
+                    if (window.composeResizeListener) {
+                        window.dispatchEvent(new Event('resize'));
+                    }
+                });
+
+                // Remove SEO wrapper after short fade (helps with perceived performance & DOM cleanup)
+                const seoWrapper = document.getElementById("seo-wrapper");
+                if (seoWrapper) {
+                    // Smooth transition out: add class for fade, then remove from DOM after animation
+                    document.body.classList.add("canvas-active");
+                    setTimeout(() => {
+                        if (seoWrapper && seoWrapper.parentNode) {
+                            seoWrapper.style.transition = "opacity 0.4s ease";
+                            seoWrapper.style.opacity = "0";
+                            // Actually remove after transition to avoid hidden DOM interfering with pointer events
+                            setTimeout(() => {
+                                if (seoWrapper.parentNode) seoWrapper.remove();
+                            }, 400);
+                        }
+                    }, 50);
+                } else {
+                    // if no seo wrapper, just ensure body class
+                    document.body.classList.add("canvas-active");
                 }
+
+                // Small patch for iOS Safari: after canvas activation, force re-layout
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                    // trigger potential resize for canvas to compute dimensions precisely
+                    if (root) {
+                        const event = new Event('resize');
+                        window.dispatchEvent(event);
+                    }
+                }, 100);
+            }
+
+            // expose function globally in case Compose app calls onWasmReady
+            window.onWasmReady = function () {
+                activateFullscreenCanvas();
             };
 
-            setCanvasDimensions();
-            // watch for resize (orientation change on mobile)
-            window.addEventListener("resize", () => {
-                setCanvasDimensions();
-                // optional: if compose needs resize event, trigger custom event
-                if (window.composeResizeListener) {
-                    window.dispatchEvent(new Event('resize'));
-                }
-            });
-
-            // Remove SEO wrapper after short fade (helps with perceived performance & DOM cleanup)
-            const seoWrapper = document.getElementById("seo-wrapper");
-            if (seoWrapper) {
-                // Smooth transition out: add class for fade, then remove from DOM after animation
-                document.body.classList.add("canvas-active");
-                setTimeout(() => {
-                    if (seoWrapper && seoWrapper.parentNode) {
-                        seoWrapper.style.transition = "opacity 0.4s ease";
-                        seoWrapper.style.opacity = "0";
-                        // Actually remove after transition to avoid hidden DOM interfering with pointer events
-                        setTimeout(() => {
-                            if (seoWrapper.parentNode) seoWrapper.remove();
-                        }, 400);
-                    }
-                }, 50);
-            } else {
-                // if no seo wrapper, just ensure body class
-                document.body.classList.add("canvas-active");
-            }
-
-            // Small patch for iOS Safari: after canvas activation, force re-layout
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-                // trigger potential resize for canvas to compute dimensions precisely
-                if (root) {
-                    const event = new Event('resize');
-                    window.dispatchEvent(event);
-                }
-            }, 100);
-        }
-
-        // expose function globally in case Compose app calls onWasmReady
-        window.onWasmReady = function() {
-            activateFullscreenCanvas();
-        };
-
-        // Fallback: If composeApp.js loads and initializes itself without explicit onWasmReady,
-        // we also listen for 'load' event and give a small delay to ensure canvas is inserted.
-        // However the composeApp.js script may initialize immediately. We check for compose root presence.
-        function attemptCanvasActivation() {
-            const root = document.getElementById("compose-root");
-            // if compose-root already contains canvas elements or any child, or after script execution, we activate
-            if (root && (root.children.length > 0 || root.querySelector("canvas"))) {
-                activateFullscreenCanvas();
-                return true;
-            }
-            return false;
-        }
-
-        // Observe for when compose inserts canvas (mutation observer for robust fullscreen)
-        const observer = new MutationObserver(function(mutations) {
-            const root = document.getElementById("compose-root");
-            if (root && (root.children.length > 0 || root.querySelector("canvas"))) {
-                activateFullscreenCanvas();
-                observer.disconnect(); // stop observing once canvas active
-            }
-        });
-
-        // Start observer if compose-root exists
-        const composeRootElement = document.getElementById("compose-root");
-        if (composeRootElement) {
-            observer.observe(composeRootElement, { childList: true, subtree: true });
-        }
-
-        // If compose app triggers custom event or calls onWasmReady directly we already did.
-        // Also listen for window load: in case compose takes longer, we check again.
-        window.addEventListener("load", function() {
-            // short delay for wasm initialization
-            setTimeout(() => {
-                if (!document.getElementById("compose-root")?.classList.contains("active")) {
-                    // If canvas not active yet but canvas element exists then activate
-                    const rootEl = document.getElementById("compose-root");
-                    if (rootEl && (rootEl.children.length > 0 || rootEl.querySelector("canvas"))) {
-                        activateFullscreenCanvas();
-                    } else {
-                        // final fallback: If compose script already executed but root not filled,
-                        // we might still wait for dynamic rendering. Use a 2nd check.
-                        setTimeout(() => {
-                            if (rootEl && (rootEl.children.length > 0 || rootEl.querySelector("canvas"))) {
-                                activateFullscreenCanvas();
-                            } else {
-                                // extreme fallback: maybe canvas is attached but hidden? just activate anyway to show container
-                                activateFullscreenCanvas();
-                            }
-                        }, 500);
-                    }
-                }
-            }, 200);
-        });
-
-        // also call manually in case composeApp.js already built the canvas synchronously
-        if (document.readyState === "loading") {
-            document.addEventListener("DOMContentLoaded", () => {
-                attemptCanvasActivation();
-            });
-        } else {
-            attemptCanvasActivation();
-        }
-
-        // Additional mobile-specific: lock orientation change ensures canvas dimensions recalc
-        window.addEventListener("orientationchange", function() {
-            setTimeout(() => {
+            // Fallback: If composeApp.js loads and initializes itself without explicit onWasmReady,
+            // we also listen for 'load' event and give a small delay to ensure canvas is inserted.
+            // However the composeApp.js script may initialize immediately. We check for compose root presence.
+            function attemptCanvasActivation() {
                 const root = document.getElementById("compose-root");
-                if (root && root.classList.contains("active")) {
-                    // force resize event to compose canvas if they listen
-                    window.dispatchEvent(new Event('resize'));
-                    // reassert fixed dimensions
-                    root.style.width = "100%";
-                    root.style.height = "100%";
-                    const canvas = root.querySelector("canvas");
-                    if (canvas) {
-                        canvas.style.width = "100%";
-                        canvas.style.height = "100%";
-                    }
+                // if compose-root already contains canvas elements or any child, or after script execution, we activate
+                if (root && (root.children.length > 0 || root.querySelector("canvas"))) {
+                    activateFullscreenCanvas();
+                    return true;
                 }
-            }, 30);
-        });
+                return false;
+            }
 
-        // Fix for iOS home indicator & safe area: canvas should extend under bottom bar if needed
-        // compose-root already uses fixed 100% which covers safe area.
-    })();
-</script>
+            // Observe for when compose inserts canvas (mutation observer for robust fullscreen)
+            const observer = new MutationObserver(function (mutations) {
+                const root = document.getElementById("compose-root");
+                if (root && (root.children.length > 0 || root.querySelector("canvas"))) {
+                    activateFullscreenCanvas();
+                    observer.disconnect(); // stop observing once canvas active
+                }
+            });
 
-<!-- Additional inline style to guarantee that compose-root active state overrides any missing canvas style -->
-<style>
-    /* Force canvas to fill when compose-root becomes active */
-    #compose-root.active canvas {
-        width: 100% !important;
-        height: 100% !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        object-fit: cover;
-    }
+            // Start observer if compose-root exists
+            const composeRootElement = document.getElementById("compose-root");
+            if (composeRootElement) {
+                observer.observe(composeRootElement, { childList: true, subtree: true });
+            }
 
-    /* Compose root active : ensure no margin/padding/offset */
-    #compose-root.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: black;
-    }
+            // If compose app triggers custom event or calls onWasmReady directly we already did.
+            // Also listen for window load: in case compose takes longer, we check again.
+            window.addEventListener("load", function () {
+                // short delay for wasm initialization
+                setTimeout(() => {
+                    if (!document.getElementById("compose-root")?.classList.contains("active")) {
+                        // If canvas not active yet but canvas element exists then activate
+                        const rootEl = document.getElementById("compose-root");
+                        if (rootEl && (rootEl.children.length > 0 || rootEl.querySelector("canvas"))) {
+                            activateFullscreenCanvas();
+                        } else {
+                            // final fallback: If compose script already executed but root not filled,
+                            // we might still wait for dynamic rendering. Use a 2nd check.
+                            setTimeout(() => {
+                                if (rootEl && (rootEl.children.length > 0 || rootEl.querySelector("canvas"))) {
+                                    activateFullscreenCanvas();
+                                } else {
+                                    // extreme fallback: maybe canvas is attached but hidden? just activate anyway to show container
+                                    activateFullscreenCanvas();
+                                }
+                            }, 500);
+                        }
+                    }
+                }, 200);
+            });
 
-    /* In case canvas uses default inline sizing, force block */
-    canvas {
-        display: block;
-    }
+            // also call manually in case composeApp.js already built the canvas synchronously
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", () => {
+                    attemptCanvasActivation();
+                });
+            } else {
+                attemptCanvasActivation();
+            }
 
-    /* Prevent any white flash on mobile */
-    body.canvas-active {
-        background: black;
-    }
+            // Additional mobile-specific: lock orientation change ensures canvas dimensions recalc
+            window.addEventListener("orientationchange", function () {
+                setTimeout(() => {
+                    const root = document.getElementById("compose-root");
+                    if (root && root.classList.contains("active")) {
+                        // force resize event to compose canvas if they listen
+                        window.dispatchEvent(new Event('resize'));
+                        // reassert fixed dimensions
+                        root.style.width = "100%";
+                        root.style.height = "100%";
+                        const canvas = root.querySelector("canvas");
+                        if (canvas) {
+                            canvas.style.width = "100%";
+                            canvas.style.height = "100%";
+                        }
+                    }
+                }, 30);
+            });
 
-    /* When seo wrapper removed, html/body still fully covered by canvas */
-    @media (max-width: 768px) {
-        #compose-root.active {
-            width: 100vw;
-            height: 100vh;
+            // Fix for iOS home indicator & safe area: canvas should extend under bottom bar if needed
+            // compose-root already uses fixed 100% which covers safe area.
+        })();
+    </script>
+
+    <!-- Additional inline style to guarantee that compose-root active state overrides any missing canvas style -->
+    <style>
+        /* Force canvas to fill when compose-root becomes active */
+        #compose-root.active canvas {
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            object-fit: cover;
         }
-    }
-</style>
+
+        /* Compose root active : ensure no margin/padding/offset */
+        #compose-root.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+
+        /* In case canvas uses default inline sizing, force block */
+        canvas {
+            display: block;
+        }
+
+        /* Prevent any white flash on mobile */
+        body.canvas-active {
+            background: black;
+        }
+
+        /* When seo wrapper removed, html/body still fully covered by canvas */
+        @media (max-width: 768px) {
+            #compose-root.active {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyD3Zq1LtKMWkpBKXEHiFNnYj0YZgRGEsEI",
+            authDomain: "kimdeo-60d18.firebaseapp.com",
+            projectId: "kimdeo-60d18",
+            storageBucket: "kimdeo-60d18.firebasestorage.app",
+            messagingSenderId: "1072100863812",
+            appId: "1:1072100863812:web:bfe00d6cc6b0491051f111",
+            measurementId: "G-Y3D0Q5BSQ7"
+        };
+        // Initialize Firebase and attach auth to the window object for Kotlin to use
+        const app = initializeApp(firebaseConfig);
+        window.firebaseAuth = getAuth(app);
+        window.googleProvider = new GoogleAuthProvider();
+        const auth = window.firebaseAuth;
+
+        // Create a helper function that Kotlin can easily call
+        window.signOutWithGoogle = async () => {
+            await signOut(auth);
+            window.googleProvider.setCustomParameters({
+                prompt: "select_account"
+            });
+
+        }
+        window.signInWithGoogle = async () => {
+            try {
+                const result = await signInWithPopup(auth, window.googleProvider);
+                // Force refresh and get the raw Firebase JWT ID Token
+                const idToken = await result.user.getIdToken(true);
+                return idToken;
+            } catch (error) {
+                console.error("Google Sign-In Error:", error);
+                throw error;
+            }
+        };
+    </script>
 </body>
+
 </html>
